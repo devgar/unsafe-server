@@ -6,12 +6,15 @@ authors = ["Edgar Albalate <dev.gardo@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-falcon = "^2.0.0"
-falcon-openapi = "^0.5.1"
+fastapi = "^0.62.0"
+uvicorn = "^0.13.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 black = "^20.8b1"
+
+[tool.poetry.scripts]
+dev = "unsafe_server:dev"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
