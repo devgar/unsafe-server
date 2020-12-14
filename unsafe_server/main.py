@@ -1,13 +1,21 @@
 from typing import Optional
 from fastapi import FastAPI
 
+from .models.item import ItemIn, ItemOut
+
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.post("/items/")
+def post_item(item: ItemIn):
+    return {
+        "name": item.name,
+        "price": item.price
+    }
 
-
-@app.get("/items/{item_id}")
+@app.get("/items/{item_id}", response_model=ItemOut)
 def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+    return {
+        "id": item_id,
+        "name": q,
+        "price": 0.0
+        }
